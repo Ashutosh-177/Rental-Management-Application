@@ -14,6 +14,10 @@
   <a href="#"><img src="https://img.shields.io/badge/Deno-000000?style=for-the-badge&logo=deno&logoColor=white&labelColor=222" /></a>
 </p>
 
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Lucii-666&repo=Rental-Management-Application&show_icons=true&theme=radical&hide_border=true&title_color=00B4D8&icon_color=00B4D8" alt="GitHub Repo Stats" />
+</p>
+
 *The ultimate ecosystem bridging the gap between Property Owners and Tenants with enterprise-level security and real-time syncing.*
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4520-a447-11eb-908a-139a6edaec5c.gif" width="100%">
@@ -24,6 +28,10 @@
 <h2>🚀</h2>
 
 Managing properties and tracking rent shouldn't require manual ledgers, missing WhatsApp messages, and delayed bank statements. **Rent Collect** is designed to completely automate and track the entire lifecycle of a tenancy—from joining a room to paying the final rent bill, seamlessly.
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=60&section=footer" width="100%"/>
+</div>
 
 ---
 
@@ -36,6 +44,10 @@ We don't just use standard logins. Our security mesh includes:
 - **Role-Based Routing**: Intelligent onboarding that adapts the entire UI based on whether you are an Owner or a Tenant.
 - **Document Vault**: Fully secure, encrypted storage where tenants can upload PAN/Aadhaar cards for Owner Verification.
 
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=40&section=footer" width="100%"/>
+</div>
+
 <br>
 
 ### 2. ⚡ [![Lightning Network](https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=22&pause=1000&color=00B4D8&vCenter=true&width=500&lines=The+Lightning+Network+(Push+%26+Sync))](https://git.io/typing-svg)
@@ -45,6 +57,10 @@ Manual pull-to-refresh is a thing of the past:
 - **Zero-Refresh UI**: The moment an Owner marks rent as "Paid", the Tenant's screen updates instantly via Firebase socket streams.
 - **Context-Aware Dashboards**: Tenant dashboards physically transform from "Exploring" to "Waiting" to "Active" based on hidden backend approvals.
 
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=40&section=footer" width="100%"/>
+</div>
+
 <br>
 
 ### 3. 💵 [![Financial Engine](https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=22&pause=1000&color=00B4D8&vCenter=true&width=400&lines=The+Financial+Engine)](https://git.io/typing-svg)
@@ -53,6 +69,10 @@ The crown jewel of the application.
 - **Batch Generation**: Owners can tap a single button to generate expected rent records for 500+ tenants simultaneously.
 - **Algorithmic Overdue Detection**: Built-in chron-logic parses due dates and visually flags rent as overdue on the dashboards.
 - **One-Tap Reminders**: Press a button to ping a tenant's lock screen demanding overdue payments.
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=40&section=footer" width="100%"/>
+</div>
 
 <br><br>
 
