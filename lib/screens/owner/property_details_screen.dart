@@ -27,7 +27,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
         final property = snapshot.data!;
         
         return Scaffold(
-          backgroundColor: AppTheme.backgroundColor,
+          backgroundColor: AppTheme.bg(context),
           appBar: AppBar(
             title: Text(property.name, style: const TextStyle(fontWeight: FontWeight.bold)),
           ),
@@ -55,22 +55,16 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        boxShadow: [AppTheme.softShadow(context)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Icon(Icons.location_on, color: AppTheme.primaryColor),
+              Icon(Icons.location_on, color: AppTheme.primary(context)),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -84,7 +78,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
             const SizedBox(height: 12),
             Text(
               property.description,
-              style: const TextStyle(color: AppTheme.lightTextColor),
+              style: TextStyle(color: AppTheme.subtext(context)),
             ),
           ],
         ],
@@ -97,7 +91,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [AppTheme.primaryColor, AppTheme.primaryColor.withValues(alpha: 0.8)],
+          colors: [AppTheme.primary(context), AppTheme.primary(context).withValues(alpha: 0.8)],
         ),
         borderRadius: BorderRadius.circular(20),
       ),
@@ -143,7 +137,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.secondaryColor),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.secondary(context)),
         ),
         TextButton.icon(
           onPressed: onAdd,
@@ -190,9 +184,9 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppTheme.card(context),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+          border: Border.all(color: AppTheme.dividerColor(context)),
         ),
         child: Row(
           children: [
@@ -201,7 +195,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Room ${room.roomNumber}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  Text('Rent: ₹${room.rentAmount}', style: const TextStyle(color: AppTheme.lightTextColor)),
+                  Text('Rent: ₹${room.rentAmount}', style: TextStyle(color: AppTheme.subtext(context))),
                 ],
               ),
             ),
