@@ -95,15 +95,15 @@ class _OTPScreenState extends State<OTPScreen> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: AppTheme.primaryColor.withValues(alpha: 0.15),
+                      color: AppTheme.primary(context).withValues(alpha: 0.15),
                       blurRadius: 15,
                       offset: const Offset(0, 8),
                     ),
                   ],
                 ),
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 35,
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppTheme.card(context),
                   backgroundImage: AssetImage('assets/images/logo.jpg'),
                 ),
               ),
@@ -114,13 +114,13 @@ class _OTPScreenState extends State<OTPScreen> {
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.secondaryColor,
+                    color: AppTheme.secondary(context),
                   ),
             ),
             const SizedBox(height: 8),
             Text(
               'Enter the 6-digit code sent via SMS to ${widget.contactInfo}',
-              style: TextStyle(color: AppTheme.lightTextColor),
+              style: TextStyle(color: AppTheme.subtext(context)),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 48),
