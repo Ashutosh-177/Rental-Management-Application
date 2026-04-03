@@ -16,8 +16,8 @@ class RoleSelectionScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              AppTheme.primaryColor.withValues(alpha: 0.1),
-              Colors.white,
+              AppTheme.primary(context).withValues(alpha: 0.1),
+              AppTheme.bg(context),
             ],
           ),
         ),
@@ -34,15 +34,15 @@ class RoleSelectionScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: AppTheme.primaryColor.withValues(alpha: 0.2),
+                          color: AppTheme.primary(context).withValues(alpha: 0.2),
                           blurRadius: 20,
                           offset: const Offset(0, 10),
                         ),
                       ],
                     ),
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 60,
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppTheme.card(context),
                       backgroundImage: AssetImage('assets/images/logo.jpg'),
                     ),
                   ),
@@ -52,7 +52,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   'Welcome to Rent Collect',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: AppTheme.secondaryColor,
+                        color: AppTheme.secondary(context),
                       ),
                   textAlign: TextAlign.center,
                 ),
@@ -60,7 +60,7 @@ class RoleSelectionScreen extends StatelessWidget {
                 Text(
                   'Please select your role to continue',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.lightTextColor,
+                        color: AppTheme.subtext(context),
                       ),
                   textAlign: TextAlign.center,
                 ),
@@ -116,14 +116,10 @@ class RoleSelectionScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppTheme.card(context),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
-            BoxShadow(
-              color: AppTheme.primaryColor.withValues(alpha: 0.05),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
+            AppTheme.softShadow(context),
           ],
         ),
         child: Row(
@@ -131,12 +127,12 @@ class RoleSelectionScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppTheme.primaryColor.withValues(alpha: 0.1),
+                color: AppTheme.primary(context).withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 icon,
-                color: AppTheme.primaryColor,
+                color: AppTheme.primary(context),
                 size: 32,
               ),
             ),
@@ -147,10 +143,10 @@ class RoleSelectionScreen extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: AppTheme.secondaryColor,
+                      color: AppTheme.secondary(context),
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -158,15 +154,15 @@ class RoleSelectionScreen extends StatelessWidget {
                     description,
                     style: TextStyle(
                       fontSize: 14,
-                      color: AppTheme.lightTextColor.withValues(alpha: 0.8),
+                      color: AppTheme.subtext(context),
                     ),
                   ),
                 ],
               ),
             ),
-            const Icon(
+            Icon(
               Icons.arrow_forward_ios_rounded,
-              color: AppTheme.lightTextColor,
+              color: AppTheme.subtext(context),
               size: 16,
             ),
           ],
