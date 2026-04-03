@@ -16,7 +16,7 @@ class RoomDetailsScreen extends StatelessWidget {
     final propertyService = Provider.of<PropertyService>(context, listen: false);
 
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.bg(context),
       appBar: AppBar(
         title: Text('Room ${room.roomNumber}', style: const TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -25,11 +25,11 @@ class RoomDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildRoomSummary(),
+            _buildRoomSummary(context),
             const SizedBox(height: 32),
-            const Text(
+            Text(
               'Current Tenants',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.secondaryColor),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.secondary(context)),
             ),
             const SizedBox(height: 16),
             _buildTenantsList(propertyService),
@@ -39,38 +39,32 @@ class RoomDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRoomSummary() {
+  Widget _buildRoomSummary(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        boxShadow: [AppTheme.softShadow(context)],
       ),
       child: Column(
         children: [
-          _buildSummaryRow(Icons.payments_outlined, 'Monthly Rent', '₹${room.rentAmount}'),
+          _buildSummaryRow(context, Icons.payments_outlined, 'Monthly Rent', '₹${room.rentAmount}'),
           const Divider(height: 32),
-          _buildSummaryRow(Icons.people_outline, 'Occupancy', '${room.currentOccupancy} / ${room.maxOccupancy}'),
+          _buildSummaryRow(context, Icons.people_outline, 'Occupancy', '${room.currentOccupancy} / ${room.maxOccupancy}'),
           const Divider(height: 32),
-          _buildSummaryRow(Icons.info_outline, 'Status', room.status),
+          _buildSummaryRow(context, Icons.info_outline, 'Status', room.status),
         ],
       ),
     );
   }
 
-  Widget _buildSummaryRow(IconData icon, String label, String value) {
+  Widget _buildSummaryRow(BuildContext context, IconData icon, String label, String value) {
     return Row(
       children: [
-        Icon(icon, color: AppTheme.primaryColor),
+        Icon(icon, color: AppTheme.primary(context)),
         const SizedBox(width: 12),
-        Text(label, style: const TextStyle(color: AppTheme.lightTextColor)),
+        Text(label, style: TextStyle(color: AppTheme.subtext(context))),
         const Spacer(),
         Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
       ],
@@ -104,15 +98,15 @@ class RoomDetailsScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+        border: Border.all(color: AppTheme.dividerColor(context)),
       ),
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: AppTheme.primaryColor.withValues(alpha: 0.1),
-            child: const Icon(Icons.person, color: AppTheme.primaryColor),
+            backgroundColor: AppTheme.primary(context).withValues(alpha: 0.1),
+            child: Icon(Icons.person, color: AppTheme.primary(context)),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -120,7 +114,7 @@ class RoomDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(tenant['name'] ?? 'Unknown', style: const TextStyle(fontWeight: FontWeight.bold)),
-                Text(tenant['phone'] ?? '', style: const TextStyle(color: AppTheme.lightTextColor, fontSize: 12)),
+                Text(tenant['phone'] ?? '', style: TextStyle(color: AppTheme.subtext(context), fontSize: 12)),
               ],
             ),
           ),
@@ -129,7 +123,7 @@ class RoomDetailsScreen extends StatelessWidget {
             onPressed: () => _showRemoveTenantDialog(context, tenant),
           ),
           IconButton(
-            icon: const Icon(Icons.info_outline, color: AppTheme.primaryColor),
+            icon: Icon(Icons.info_outline, color: AppTheme.primary(context)),
             onPressed: () {
               Navigator.push(
                 context,
