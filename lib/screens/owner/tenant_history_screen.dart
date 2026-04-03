@@ -13,7 +13,7 @@ class TenantHistoryScreen extends StatelessWidget {
     final propertyService = Provider.of<PropertyService>(context, listen: false);
 
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.bg(context),
       appBar: AppBar(
         title: const Text('Tenant History', style: TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -27,8 +27,8 @@ class TenantHistoryScreen extends StatelessWidget {
           final history = snapshot.data ?? [];
 
           if (history.isEmpty) {
-            return const Center(
-              child: Text('No tenant history found.', style: TextStyle(color: AppTheme.lightTextColor)),
+            return Center(
+              child: Text('No tenant history found.', style: TextStyle(color: AppTheme.subtext(context))),
             );
           }
 
@@ -37,7 +37,7 @@ class TenantHistoryScreen extends StatelessWidget {
             itemCount: history.length,
             itemBuilder: (context, index) {
               final record = history[index];
-              return _buildHistoryCard(record);
+              return _buildHistoryCard(context, record);
             },
           );
         },
@@ -45,14 +45,14 @@ class TenantHistoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHistoryCard(Map<String, dynamic> record) {
+  Widget _buildHistoryCard(BuildContext context, Map<String, dynamic> record) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+        border: Border.all(color: AppTheme.dividerColor(context)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,14 +63,14 @@ class TenantHistoryScreen extends StatelessWidget {
               Text(record['name'] ?? 'Unknown', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(8)),
-                child: const Text('FORMER', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.grey)),
+                decoration: BoxDecoration(color: AppTheme.dividerColor(context), borderRadius: BorderRadius.circular(8)),
+                child: Text('FORMER', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppTheme.subtext(context))),
               ),
             ],
           ),
           const SizedBox(height: 8),
           Text('Property: ${record['propertyName']}', style: const TextStyle(fontSize: 14)),
-          Text('Phone: ${record['phone']}', style: const TextStyle(color: AppTheme.lightTextColor, fontSize: 13)),
+          Text('Phone: ${record['phone']}', style: TextStyle(color: AppTheme.subtext(context), fontSize: 13)),
           const Divider(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,14 +78,14 @@ class TenantHistoryScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Joined', style: TextStyle(fontSize: 11, color: AppTheme.lightTextColor)),
+                  Text('Joined', style: TextStyle(fontSize: 11, color: AppTheme.subtext(context))),
                   Text(_formatDate(record['joinedAt']), style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text('Left', style: TextStyle(fontSize: 11, color: AppTheme.lightTextColor)),
+                  Text('Left', style: TextStyle(fontSize: 11, color: AppTheme.subtext(context))),
                   Text(_formatDate(record['leftAt']), style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.red)),
                 ],
               ),
@@ -93,7 +93,7 @@ class TenantHistoryScreen extends StatelessWidget {
           ),
           if (record['removalReason'] != null && record['removalReason'].toString().isNotEmpty) ...[
             const SizedBox(height: 12),
-            Text('Reason: ${record['removalReason']}', style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic, color: AppTheme.lightTextColor)),
+            Text('Reason: ${record['removalReason']}', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic, color: AppTheme.subtext(context))),
           ],
         ],
       ),
