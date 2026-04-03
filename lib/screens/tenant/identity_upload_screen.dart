@@ -87,9 +87,9 @@ class _IdentityUploadScreenState extends State<IdentityUploadScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Please upload a clear photo of your government-issued ID for verification.',
-              style: TextStyle(color: AppTheme.lightTextColor),
+              style: TextStyle(color: AppTheme.subtext(context)),
             ),
             const SizedBox(height: 32),
             const Text('Select Document Type', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -113,9 +113,9 @@ class _IdentityUploadScreenState extends State<IdentityUploadScreen> {
               child: Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+                  color: AppTheme.surface(context),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade300, style: BorderStyle.solid),
+                  border: Border.all(color: AppTheme.dividerColor(context), style: BorderStyle.solid),
                   image: _selectedImage != null 
                     ? DecorationImage(image: FileImage(_selectedImage!), fit: BoxFit.cover)
                     : null,
