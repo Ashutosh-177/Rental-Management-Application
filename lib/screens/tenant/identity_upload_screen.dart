@@ -21,7 +21,12 @@ class _IdentityUploadScreenState extends State<IdentityUploadScreen> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.camera,
+      imageQuality: 70,
+      maxWidth: 1024,
+      maxHeight: 1024,
+    );
     if (image != null) {
       setState(() => _selectedImage = File(image.path));
     }
@@ -42,35 +47,37 @@ class _IdentityUploadScreenState extends State<IdentityUploadScreen> {
     final scout = ScaffoldMessenger.of(context);
     final nav = Navigator.of(context);
 
-    setState(() => _isUploading = true);
-    
-    final downloadUrl = await storageService.uploadIdentityDoc(
-      authService.currentUser!.uid,
-      _selectedType.name,
-      _selectedImage!,
-    );
-    
-    if (!mounted) return;
-
-    if (downloadUrl != null) {
-      // Mock verification success for now, but save the URL
-      await authService.updateProfile(isVerified: true); 
+    try {
+      final downloadUrl = await storageService.uploadIdentityDoc(
+        authService.currentUser!.uid,
+        _selectedType.name,
+        _selectedImage!,
+      );
       
-      if (mounted) {
-        scout.showSnackBar(
-          const SnackBar(content: Text('Identity document submitted and verified!')),
-        );
-        nav.pop();
+      if (!mounted) return;
+
+      if (downloadUrl != null) {
+        // Mock verification success for now, but save the URL
+        await authService.updateProfile(isVerified: true); 
+        
+        if (mounted) {
+          scout.showSnackBar(
+            const SnackBar(content: Text('Identity document submitted and verified!')),
+          );
+          nav.pop();
+        }
       }
-    } else {
+    } catch (e) {
       if (mounted) {
         scout.showSnackBar(
-          const SnackBar(content: Text('Failed to upload document')),
+          SnackBar(content: Text('Upload failed: $e')),
         );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isUploading = false);
       }
     }
-    
-    setState(() => _isUploading = false);
   }
 
   @override
