@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 import 'models/user_model.dart';
 import 'services/auth_service.dart';
 import 'services/property_service.dart';
@@ -21,6 +22,11 @@ void main() async {
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await Supabase.initialize(
+    url: 'https://gjfunvewcbxpmdfnyunv.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdqZnVudmV3Y2J4cG1kZm55dW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxOTUyMzYsImV4cCI6MjA5MDc3MTIzNn0.1zFR8F7O3FoLNFsfpvA24E2lluVbR0mam64xrdZd-QI',
   );
 
   runApp(
