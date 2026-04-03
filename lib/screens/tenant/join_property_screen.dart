@@ -73,7 +73,7 @@ class _JoinPropertyScreenState extends State<JoinPropertyScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Icon(Icons.home_work_outlined, size: 80, color: AppTheme.primaryColor),
+            Icon(Icons.home_work_outlined, size: 80, color: AppTheme.primary(context)),
             const SizedBox(height: 24),
             const Text(
               'Enter Property Join Code',
@@ -81,10 +81,10 @@ class _JoinPropertyScreenState extends State<JoinPropertyScreen> {
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
-            const Text(
+            Text(
               'Ask your property owner for the 6-digit security code to join their property.',
               textAlign: TextAlign.center,
-              style: TextStyle(color: AppTheme.lightTextColor),
+              style: TextStyle(color: AppTheme.subtext(context)),
             ),
             const SizedBox(height: 40),
             TextField(
