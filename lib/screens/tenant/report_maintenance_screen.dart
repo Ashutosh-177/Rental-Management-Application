@@ -22,7 +22,12 @@ class _ReportMaintenanceScreenState extends State<ReportMaintenanceScreen> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.camera,
+      imageQuality: 70,
+      maxWidth: 1024,
+      maxHeight: 1024,
+    );
     if (image != null) {
       setState(() => _selectedImage = File(image.path));
     }
