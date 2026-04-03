@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (user == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
 
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.bg(context),
       appBar: AppBar(
         title: const Text('My Profile', style: TextStyle(fontWeight: FontWeight.bold)),
         actions: [
@@ -101,15 +101,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               CircleAvatar(
                 radius: 60,
-                backgroundColor: AppTheme.primaryColor.withValues(alpha: 0.1),
+                backgroundColor: AppTheme.primary(context).withValues(alpha: 0.1),
                 backgroundImage: user.photoUrl != null ? NetworkImage(user.photoUrl!) : null,
-                child: user.photoUrl == null ? const Icon(Icons.person, size: 60, color: AppTheme.primaryColor) : null,
+                child: user.photoUrl == null ? Icon(Icons.person, size: 60, color: AppTheme.primary(context)) : null,
               ),
               Positioned(
                 bottom: 0,
                 right: 0,
                 child: CircleAvatar(
-                  backgroundColor: AppTheme.primaryColor,
+                  backgroundColor: AppTheme.primary(context),
                   radius: 20,
                   child: IconButton(
                     icon: const Icon(Icons.camera_alt, size: 20, color: Colors.white),
@@ -160,12 +160,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 16),
           Text(
             user.role == UserRole.owner ? 'Property Owner' : 'Tenant',
-            style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, letterSpacing: 1.2),
+            style: TextStyle(color: AppTheme.primary(context), fontWeight: FontWeight.bold, letterSpacing: 1.2),
           ),
           const SizedBox(height: 4),
           Text(
             user.phoneNumber ?? user.email ?? '',
-            style: const TextStyle(color: AppTheme.lightTextColor),
+            style: TextStyle(color: AppTheme.subtext(context)),
           ),
         ],
       ),
