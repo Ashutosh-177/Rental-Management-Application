@@ -14,7 +14,7 @@ class JoinRequestsScreen extends StatelessWidget {
     final propertyService = Provider.of<PropertyService>(context, listen: false);
 
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.bg(context),
       appBar: AppBar(
         title: const Text('Join Requests', style: TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -28,8 +28,8 @@ class JoinRequestsScreen extends StatelessWidget {
           final requests = snapshot.data ?? [];
 
           if (requests.isEmpty) {
-            return const Center(
-              child: Text('No pending join requests.', style: TextStyle(color: AppTheme.lightTextColor)),
+            return Center(
+              child: Text('No pending join requests.', style: TextStyle(color: AppTheme.subtext(context))),
             );
           }
 
@@ -51,15 +51,9 @@ class JoinRequestsScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        boxShadow: [AppTheme.softShadow(context)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,8 +61,8 @@ class JoinRequestsScreen extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: AppTheme.primaryColor.withValues(alpha: 0.1),
-                child: Text(request.tenantName[0].toUpperCase(), style: const TextStyle(color: AppTheme.primaryColor)),
+                backgroundColor: AppTheme.primary(context).withValues(alpha: 0.1),
+                child: Text(request.tenantName[0].toUpperCase(), style: TextStyle(color: AppTheme.primary(context))),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -76,7 +70,7 @@ class JoinRequestsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(request.tenantName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    Text(request.tenantPhone, style: const TextStyle(color: AppTheme.lightTextColor, fontSize: 14)),
+                    Text(request.tenantPhone, style: TextStyle(color: AppTheme.subtext(context), fontSize: 14)),
                   ],
                 ),
               ),
@@ -85,7 +79,7 @@ class JoinRequestsScreen extends StatelessWidget {
           const Divider(height: 24),
           Text(
             'Requesting to join:',
-            style: TextStyle(color: AppTheme.lightTextColor, fontSize: 12),
+            style: TextStyle(color: AppTheme.subtext(context), fontSize: 12),
           ),
           Text(
             request.propertyName,
