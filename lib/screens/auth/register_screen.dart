@@ -149,15 +149,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: AppTheme.primaryColor.withValues(alpha: 0.2),
+                          color: AppTheme.primary(context).withValues(alpha: 0.2),
                           blurRadius: 15,
                           offset: const Offset(0, 8),
                         ),
                       ],
                     ),
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 40,
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppTheme.card(context),
                       backgroundImage: AssetImage('assets/images/logo.jpg'),
                     ),
                   ),
@@ -168,21 +168,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: AppTheme.secondaryColor,
+                        color: AppTheme.secondary(context),
                       ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Fill in your details to get started as a ${widget.selectedRole.toString().split('.').last}.',
-                  style: TextStyle(color: AppTheme.lightTextColor),
+                  style: TextStyle(color: AppTheme.subtext(context)),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
 
                 // Verification method selector
-                const Text(
+                Text(
                   'Register with',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppTheme.text(context)),
                 ),
                 const SizedBox(height: 12),
                 Row(
@@ -280,12 +280,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 Row(
                   children: [
-                    Expanded(child: Divider(color: Colors.grey.shade300)),
+                    Expanded(child: Divider(color: AppTheme.dividerColor(context))),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text('OR', style: TextStyle(color: AppTheme.lightTextColor, fontSize: 12)),
+                      child: Text('OR', style: TextStyle(color: AppTheme.subtext(context), fontSize: 12)),
                     ),
-                    Expanded(child: Divider(color: Colors.grey.shade300)),
+                    Expanded(child: Divider(color: AppTheme.dividerColor(context))),
                   ],
                 ),
 
@@ -295,9 +295,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onPressed: _isGoogleLoading ? null : _handleGoogleSignUp,
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    side: BorderSide(color: Colors.grey.shade300),
+                    side: BorderSide(color: AppTheme.dividerColor(context)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    backgroundColor: Colors.white,
+                    backgroundColor: AppTheme.card(context),
                   ),
                   child: _isGoogleLoading
                       ? const SizedBox(
@@ -316,8 +316,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             const SizedBox(width: 12),
                             Text(
                               'Sign up with Google',
-                              style: const TextStyle(
-                                color: Colors.black87,
+                              style: TextStyle(
+                                color: AppTheme.text(context),
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
                               ),
@@ -331,7 +331,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Already have an account?'),
+                    Text('Already have an account?', style: TextStyle(color: AppTheme.subtext(context))),
                     TextButton(
                       onPressed: () => Navigator.pushReplacement(
                         context,
@@ -360,15 +360,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: isSelected ? AppTheme.primaryColor : Colors.white,
+          color: isSelected ? AppTheme.primary(context) : AppTheme.card(context),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected ? AppTheme.primaryColor : Colors.grey.shade300,
+            color: isSelected ? AppTheme.primary(context) : AppTheme.dividerColor(context),
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: AppTheme.primaryColor.withValues(alpha: 0.3),
+                    color: AppTheme.primary(context).withValues(alpha: 0.3),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   )
@@ -377,12 +377,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         child: Column(
           children: [
-            Icon(icon, color: isSelected ? Colors.white : AppTheme.lightTextColor),
+            Icon(icon, color: isSelected ? (AppTheme.isDark(context) ? Colors.black87 : Colors.white) : AppTheme.subtext(context)),
             const SizedBox(height: 8),
             Text(
               title,
               style: TextStyle(
-                color: isSelected ? Colors.white : AppTheme.lightTextColor,
+                color: isSelected ? (AppTheme.isDark(context) ? Colors.black87 : Colors.white) : AppTheme.subtext(context),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
             ),
