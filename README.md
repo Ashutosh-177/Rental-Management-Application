@@ -1,103 +1,102 @@
+<!-- Header Section with Animated Wave -->
 <div align="center">
+  
+<img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=150&section=header&text=Rent%20Collect%202.0&fontSize=40&animation=twinkling&fontColor=ffffff" width="100%"/>
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Buildings/House%20with%20Garden.png" alt="House with Garden" width="100" height="100" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Buildings/House%20with%20Garden.png" alt="House" width="120" />
 
-# Rent Collect 🏢
-
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=30&pause=1000&color=00B4D8&center=true&vCenter=true&width=800&height=50&lines=Seamless+Property+Management;Real-time+Rent+Collection;Built+with+Flutter+%26+Firebase)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=26&pause=1000&color=00B4D8&center=true&vCenter=true&width=800&height=50&lines=Seamless+Property+Management%3A+Evolved;Zero-Latency+Rent+Collection;Real-Time+Push+Notifications;Powered+by+Flutter+%26+Supabase)](https://git.io/typing-svg)
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" />
-  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" />
-  <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
-  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+  <a href="#"><img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white&labelColor=222" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black&labelColor=222" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white&labelColor=222" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Deno-000000?style=for-the-badge&logo=deno&logoColor=white&labelColor=222" /></a>
 </p>
 
-A professional, real-time ecosystem connecting **Property Owners** and **Tenants** through an intelligent synchronization layer.
-
-[Explore Features](#-module-1-foundation--authentication) • [Installation (WIP)](#) • [Tech Stack](#-technical-stack)
+*The ultimate ecosystem bridging the gap between Property Owners and Tenants with enterprise-level security and real-time syncing.*
 
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Line.png" alt="Line separator" width="100%" />
 
 </div>
 
-## 📦 Module 1: Foundation & Authentication
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Locked%20with%20Pen.png" alt="Locked" width="80" />
+## 🌟 Why Rent Collect?
+<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" alt="Rocket" width="100" />
 
-*The secure gateway and user identity management system.*
+Managing properties and tracking rent shouldn't require manual ledgers, missing WhatsApp messages, and delayed bank statements. **Rent Collect** is designed to completely automate and track the entire lifecycle of a tenancy—from joining a room to paying the final rent bill, seamlessly.
 
-### 🛡️ Authentication Features
-- **Phone Number + OTP**: Seamless registration via mobile verification.
-- **Email & Password**: Traditional secure login flow.
-- **Role Selection**: Intent-based onboarding (`Owner` or `Tenant`).
-- **Real-time Sessions**: Persistent login states that survive app restarts.
+---
 
-### 👤 Profile Management
-- **Dynamic Profiles**: Editable metadata (Name, Bio, Contact).
-- **Biometric/Visual ID**: Integrated camera/gallery for profile photos.
-- **Avatar Storage**: Direct integration with Firebase/Supabase Storage.
+## 🏗️ Core Architecture & Features
 
-<br>
+### 1. 🔐 The Security Layer
+<img align="left" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Locked%20with%20Pen.png" alt="Locked" width="60" />
+We don't just use standard logins. Our security mesh includes:
 
-## 🏠 Module 2: Dashboards & Sync
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Mobile%20Phone.png" alt="Phone" width="80" />
-
-*The operational core providing instant feedback and connectivity.*
-
-### 📊 Owner Dashboard
-- **Instant Stats**: Real-time counters for Properties, Rooms, and Tenants.
-- **Occupancy Insights**: Visual breakdown of room statuses.
-
-### 🏘️ Tenant Dashboard
-- **Context-Aware UI**: Adapts dynamically (No Property Explorer -> Pending Request -> Active Tenant Hub).
-
-### 🔔 Real-time Communication
-- **Global Push Notifications**: Integrated Firebase Cloud Messaging via Supabase Edge Functions.
-- **Unread Badges**: Real-time counters on navigation bars.
-- **Zero-Refresh**: Tenant screens update instantly when an owner acts.
+- **Phone OTP & Biometric Fallbacks**: Frictionless and secure entry.
+- **Role-Based Routing**: Intelligent onboarding that adapts the entire UI based on whether you are an Owner or a Tenant.
+- **Document Vault**: Fully secure, encrypted storage where tenants can upload PAN/Aadhaar cards for Owner Verification.
 
 <br>
 
-## 🛠️ Module 3: Property Operations
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Wrench.png" alt="Wrench" width="80" />
+### 2. ⚡ The Lightning Network (Push & Sync)
+<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/High%20Voltage.png" alt="Lightning" width="60" />
+Manual pull-to-refresh is a thing of the past:
 
-*The business logic layer where property management happens.*
-
-### 🏫 Property & Room Engine
-- **Property Studio**: Owners create properties.
-- **Room Architect**: Define limits, rent amounts, and statuses.
-- **Join Logic**: Generates secure 6-digit codes for private invites.
-
-### 📑 Request & Verification Hub
-- **The Decider**: Owners review tenant bios and `Approve/Reject` seamlessly.
-- **Document Verification**: Tenants upload KYC (Aadhaar/PAN); owners verify with a smooth UI.
-- **Issue Reporting**: Tenants report maintenance with text and camera uploads.
+- **Supabase Edge Functions**: We wrote a custom Deno-based Edge Function that instantly translates database writes into OS-level Push Notifications.
+- **Zero-Refresh UI**: The moment an Owner marks rent as "Paid", the Tenant's screen updates instantly via Firebase socket streams.
+- **Context-Aware Dashboards**: Tenant dashboards physically transform from "Exploring" to "Waiting" to "Active" based on hidden backend approvals.
 
 <br>
 
-## 💰 Module 4: Rent Collection
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Money%20Bag.png" alt="Money" width="80" />
+### 3. 💵 The Financial Engine
+<img align="left" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Money%20Bag.png" alt="Money" width="60" />
+The crown jewel of the application.
 
-*The financial engine — the feature the entire app is built around.*
+- **Batch Generation**: Owners can tap a single button to generate expected rent records for 500+ tenants simultaneously.
+- **Algorithmic Overdue Detection**: Built-in chron-logic parses due dates and visually flags rent as overdue on the dashboards.
+- **One-Tap Reminders**: Press a button to ping a tenant's lock screen demanding overdue payments.
 
-### 🧾 Smart Record Generation
-- **One-Tap Generation**: Generate rent for all tenants across properties instantly.
-- **Overdue Detection**: Built-in intelligence marks missed payments.
-- **Room-Linked Amounts**: Automatically syncs rent with predefined room costs.
-
-### 📊 Revenue Dashboard
-- **Live Totals**: Visual summary of `Expected`, `Collected`, and `Pending`.
-- **Rent Reminders**: One-tap push notifications to trigger reminders.
-
-<br>
+<br><br>
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Line.png" alt="Line separator" width="100%" />
 
-### 🚀 Technical Stack
+### 🌊 Flow & Logic
+```mermaid
+graph TD
+    A[Property Owner] -->|Creates| B(Property & Room)
+    B -->|Generates| C{6-Digit Secret Code}
+    D[Tenant] -->|Enters Code| C
+    C -->|Sends Request| A
+    A -->|Approves| E((Active Tenancy))
+    E -->|Edge Function Triggers| F[Push Notification to Tenant!]
+    E -->|At Start of Month| G[Rent Automatically Tracked]
+```
+</div>
 
-<img src="https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white" /> <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white" /> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" /> <img src="https://img.shields.io/badge/Supabase%20Edge%20Functions-3ECF8E?style=flat-square&logo=supabase&logoColor=white" />
+## 🎨 Visual Preview
 
-*Status: Modules 1, 2, 3, and 4 are complete and ready for deployment.*
+<details>
+<summary><b>Click to reveal the power of the UI 📸</b></summary>
+<br>
 
+*We are currently undergoing a massive 3D Glassmorphism UI Revamp. Stay tuned for highly animated, 60fps polished screenshots!*
+
+</details>
+
+## 🛠 Develop & Run
+<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80" />
+
+1. Clone the repository
+2. Run `flutter pub get`
+3. Link your Supabase CLI for edge functions:  
+   `npx supabase link --project-ref gjfunvewcbxpmdfnyunv`
+4. Deploy the notification function:  
+   `npx supabase functions deploy send-push`
+5. Hit `flutter run`!
+
+<div align="center">
+  <br>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=100&section=footer&animation=twinkling" width="100%"/>
 </div>
