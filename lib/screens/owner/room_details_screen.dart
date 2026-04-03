@@ -1,0 +1,176 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../models/room_model.dart';
+import '../../services/property_service.dart';
+import '../../utils/app_theme.dart';
+import 'tenant_profile_details_screen.dart';
+
+class RoomDetailsScreen extends StatelessWidget {
+  final String propertyId;
+  final RoomModel room;
+
+  const RoomDetailsScreen({super.key, required this.propertyId, required this.room});
+
+  @override
+  Widget build(BuildContext context) {
+    final propertyService = Provider.of<PropertyService>(context, listen: false);
+
+    return Scaffold(
+      backgroundColor: AppTheme.backgroundColor,
+      appBar: AppBar(
+        title: Text('Room ${room.roomNumber}', style: const TextStyle(fontWeight: FontWeight.bold)),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildRoomSummary(),
+            const SizedBox(height: 32),
+            const Text(
+              'Current Tenants',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.secondaryColor),
+            ),
+            const SizedBox(height: 16),
+            _buildTenantsList(propertyService),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRoomSummary() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          _buildSummaryRow(Icons.payments_outlined, 'Monthly Rent', '₹${room.rentAmount}'),
+          const Divider(height: 32),
+          _buildSummaryRow(Icons.people_outline, 'Occupancy', '${room.currentOccupancy} / ${room.maxOccupancy}'),
+          const Divider(height: 32),
+          _buildSummaryRow(Icons.info_outline, 'Status', room.status),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSummaryRow(IconData icon, String label, String value) {
+    return Row(
+      children: [
+        Icon(icon, color: AppTheme.primaryColor),
+        const SizedBox(width: 12),
+        Text(label, style: const TextStyle(color: AppTheme.lightTextColor)),
+        const Spacer(),
+        Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+      ],
+    );
+  }
+
+  Widget _buildTenantsList(PropertyService service) {
+    return StreamBuilder<List<Map<String, dynamic>>>(
+      stream: service.getRoomTenantsStream(propertyId, room.id),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
+        if (snapshot.data!.isEmpty) {
+          return const Center(child: Text('No tenants assigned to this room.'));
+        }
+
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            final tenant = snapshot.data![index];
+            return _buildTenantCard(context, tenant);
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildTenantCard(BuildContext context, Map<String, dynamic> tenant) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: AppTheme.primaryColor.withValues(alpha: 0.1),
+            child: const Icon(Icons.person, color: AppTheme.primaryColor),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(tenant['name'] ?? 'Unknown', style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(tenant['phone'] ?? '', style: const TextStyle(color: AppTheme.lightTextColor, fontSize: 12)),
+              ],
+            ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.person_remove_outlined, color: Colors.red),
+            onPressed: () => _showRemoveTenantDialog(context, tenant),
+          ),
+          IconButton(
+            icon: const Icon(Icons.info_outline, color: AppTheme.primaryColor),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TenantProfileDetailsScreen(tenantId: tenant['id']),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showRemoveTenantDialog(BuildContext context, Map<String, dynamic> tenant) {
+    final reasonController = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Remove ${tenant['name']}?'),
+        content: TextField(
+          controller: reasonController,
+          decoration: const InputDecoration(labelText: 'Reason for removal (Optional)'),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () {
+              Provider.of<PropertyService>(context, listen: false).removeTenantFromRoom(
+                propertyId,
+                room.id,
+                tenant['id'],
+                reasonController.text,
+              );
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text('Confirm Remove'),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "977202851449",
+    "project_id": "rent-collect-app",
+    "storage_bucket": "rent-collect-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977202851449:android:492be09aead0e098512ea8",
+        "android_client_info": {
+          "package_name": "com.rentcollect.rent_collect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977202851449-2ojdaqr9412ppqeqh8ks1l7cr9qtoo8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rentcollect.rent_collect",
+            "certificate_hash": "d713efb5511749ad5b34c1708303a01d18d32438"
+          }
+        },
+        {
+          "client_id": "977202851449-f3mmnla6n05kbllrivitm0qh4csonlf3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQuDojqJ-vmHP0eLLQGhE_D_gffLdnlpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977202851449-f3mmnla6n05kbllrivitm0qh4csonlf3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
