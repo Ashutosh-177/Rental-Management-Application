@@ -16,7 +16,7 @@ class MyRentScreen extends StatelessWidget {
     final tenantId = authService.currentUser!.uid;
 
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.bg(context),
       appBar: AppBar(
         title: const Text('My Rent', style: TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -27,9 +27,9 @@ class MyRentScreen extends StatelessWidget {
           children: [
             _buildCurrentMonthCard(rentService, tenantId),
             const SizedBox(height: 28),
-            const Text(
+            Text(
               'Payment History',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppTheme.secondaryColor),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppTheme.secondary(context)),
             ),
             const SizedBox(height: 16),
             _buildPaymentHistory(rentService, tenantId),
@@ -50,41 +50,35 @@ class MyRentScreen extends StatelessWidget {
         final rent = snapshot.data;
 
         if (rent == null) {
-          return _buildNoRentCard();
+          return _buildNoRentCard(context);
         }
 
-        return _buildCurrentRentCard(rent);
+        return _buildCurrentRentCard(context, rent);
       },
     );
   }
 
-  Widget _buildNoRentCard() {
+  Widget _buildNoRentCard(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        boxShadow: [AppTheme.softShadow(context)],
       ),
       child: Column(
         children: [
           Icon(Icons.receipt_long_outlined, size: 48, color: Colors.grey.withValues(alpha: 0.4)),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'No rent record for this month',
-            style: TextStyle(color: AppTheme.lightTextColor, fontSize: 15),
+            style: TextStyle(color: AppTheme.subtext(context), fontSize: 15),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Your owner will generate rent records soon.',
-            style: TextStyle(color: AppTheme.lightTextColor, fontSize: 13),
+            style: TextStyle(color: AppTheme.subtext(context), fontSize: 13),
             textAlign: TextAlign.center,
           ),
         ],
@@ -92,7 +86,7 @@ class MyRentScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCurrentRentCard(RentPaymentModel rent) {
+  Widget _buildCurrentRentCard(BuildContext context, RentPaymentModel rent) {
     final statusColor = {
       RentStatus.paid: Colors.green,
       RentStatus.pending: Colors.orange,
@@ -235,13 +229,13 @@ class MyRentScreen extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: history.length,
-          itemBuilder: (context, index) => _buildHistoryTile(history[index]),
+          itemBuilder: (context, index) => _buildHistoryTile(context, history[index]),
         );
       },
     );
   }
 
-  Widget _buildHistoryTile(RentPaymentModel rent) {
+  Widget _buildHistoryTile(BuildContext context, RentPaymentModel rent) {
     final statusColor = {
       RentStatus.paid: Colors.green,
       RentStatus.pending: Colors.orange,
@@ -258,15 +252,9 @@ class MyRentScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.card(context),
         borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        boxShadow: [AppTheme.softShadow(context)],
       ),
       child: Row(
         children: [
@@ -290,7 +278,7 @@ class MyRentScreen extends StatelessWidget {
                   rent.status == RentStatus.paid && rent.paidDate != null
                       ? 'Paid on ${DateFormat('dd MMM yyyy').format(rent.paidDate!)}'
                       : 'Due ${DateFormat('dd MMM yyyy').format(rent.dueDate)}',
-                  style: const TextStyle(color: AppTheme.lightTextColor, fontSize: 12),
+                  style: TextStyle(color: AppTheme.subtext(context), fontSize: 12),
                 ),
               ],
             ),
