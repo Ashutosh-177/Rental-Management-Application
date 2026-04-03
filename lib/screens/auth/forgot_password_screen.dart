@@ -48,13 +48,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               'Reset Password',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.secondaryColor,
+                    color: AppTheme.secondary(context),
                   ),
             ),
             const SizedBox(height: 8),
             Text(
               'Enter your registered email address to receive a password reset link.',
-              style: TextStyle(color: AppTheme.lightTextColor),
+              style: TextStyle(color: AppTheme.subtext(context)),
             ),
             const SizedBox(height: 48),
             
