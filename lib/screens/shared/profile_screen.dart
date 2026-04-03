@@ -121,34 +121,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       final authService = Provider.of<AuthService>(context, listen: false);
                       final scout = ScaffoldMessenger.of(context);
                       
-                      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+                      final XFile? image = await picker.pickImage(
+                        source: ImageSource.gallery,
+                        imageQuality: 70,
+                        maxWidth: 1024,
+                        maxHeight: 1024,
+                      );
                       
                       if (image == null) return;
                       
-                      setState(() => _isSaving = true);
-                      
-                      final downloadUrl = await storageService.uploadProfileImage(
-                        user.uid, 
-                        File(image.path)
-                      );
-                      
-                      if (!mounted) return;
-
-                      if (downloadUrl != null) {
-                        final error = await authService.updateProfile(photoUrl: downloadUrl);
-                            
-                        if (!mounted) return;
-                        setState(() => _isSaving = false);
+                      try {
+                        final downloadUrl = await storageService.uploadProfileImage(
+                          user.uid, 
+                          File(image.path)
+                        );
                         
-                        if (error == null) {
-                          scout.showSnackBar(
-                            const SnackBar(content: Text('Profile picture updated!')),
-                          );
+                        if (!mounted) return;
+
+                        if (downloadUrl != null) {
+                          final error = await authService.updateProfile(photoUrl: downloadUrl);
+                              
+                          if (!mounted) return;
+                          setState(() => _isSaving = false);
+                          
+                          if (error == null) {
+                            scout.showSnackBar(
+                              const SnackBar(content: Text('Profile picture updated!')),
+                            );
+                          } else {
+                            scout.showSnackBar(
+                              SnackBar(content: Text('Error updating profile: $error')),
+                            );
+                          }
                         }
-                      } else {
+                      } catch (e) {
                         setState(() => _isSaving = false);
                         scout.showSnackBar(
-                          const SnackBar(content: Text('Failed to upload image.')),
+                          SnackBar(content: Text('Upload failed: $e')),
                         );
                       }
                     },
