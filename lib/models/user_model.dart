@@ -16,6 +16,7 @@ class UserModel {
   final String? roomId;
   final String? photoUrl;
   final String? bio;
+  final String? fcmToken;
 
   UserModel({
     required this.uid,
@@ -30,6 +31,7 @@ class UserModel {
     this.roomId,
     this.photoUrl,
     this.bio,
+    this.fcmToken,
   });
 
   Map<String, dynamic> toMap() {
@@ -46,6 +48,7 @@ class UserModel {
       'roomId': roomId,
       'photo_url': photoUrl,
       'bio': bio,
+      'fcm_token': fcmToken,
     };
   }
 
@@ -65,6 +68,7 @@ class UserModel {
       roomId: map['roomId'],
       photoUrl: map['photo_url'],
       bio: map['bio'],
+      fcmToken: map['fcm_token'],
     );
   }
 }

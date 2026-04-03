@@ -54,3 +54,7 @@ firestore.rules
 storage.rules
 firebase.json
 .firebaserc
+
+# Environment variables
+.env
+supabase/.env

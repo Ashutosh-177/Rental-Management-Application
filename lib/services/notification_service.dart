@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import '../models/notification_model.dart';
+import 'push_notification_service.dart';
 
 class NotificationService extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -17,7 +18,21 @@ class NotificationService extends ChangeNotifier {
   }
 
   Future<void> sendNotification(NotificationModel notification) async {
+    // 1. Save in-app notification to Firestore
     await _firestore.collection('notifications').add(notification.toMap());
+
+    // 2. Trigger OS-level push notification via Supabase Edge Function
+    try {
+      final pushService = PushNotificationService();
+      await pushService.sendPushNotification(
+        targetUserId: notification.userId,
+        title: notification.title,
+        body: notification.message,
+        data: {'type': notification.type},
+      );
+    } catch (e) {
+      debugPrint('Error triggering push notification: $e');
+    }
   }
 
   Future<void> markAsRead(String notificationId) async {

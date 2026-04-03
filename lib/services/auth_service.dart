@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../models/user_model.dart';
+import 'push_notification_service.dart';
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -23,6 +24,7 @@ class AuthService extends ChangeNotifier {
     _auth.authStateChanges().listen((user) {
       if (user != null) {
         _subscribeToUserChanges(user.uid);
+        PushNotificationService().initialize(user.uid);
       } else {
         _userModel = null;
         _userSubscription?.cancel();
