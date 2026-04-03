@@ -3,7 +3,7 @@
   
 <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=150&section=header&text=Rent%20Collect%202.0&fontSize=40&animation=twinkling&fontColor=ffffff" width="100%"/>
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Buildings/House%20with%20Garden.png" alt="House" width="120" />
+<h1>🏢</h1>
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=26&pause=1000&color=00B4D8&center=true&vCenter=true&width=800&height=50&lines=Seamless+Property+Management%3A+Evolved;Zero-Latency+Rent+Collection;Real-Time+Push+Notifications;Powered+by+Flutter+%26+Supabase)](https://git.io/typing-svg)
 
@@ -16,12 +16,12 @@
 
 *The ultimate ecosystem bridging the gap between Property Owners and Tenants with enterprise-level security and real-time syncing.*
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Line.png" alt="Line separator" width="100%" />
+<hr width="80%">
 
 </div>
 
 ## 🌟 Why Rent Collect?
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" alt="Rocket" width="100" />
+<h2>🚀</h2>
 
 Managing properties and tracking rent shouldn't require manual ledgers, missing WhatsApp messages, and delayed bank statements. **Rent Collect** is designed to completely automate and track the entire lifecycle of a tenancy—from joining a room to paying the final rent bill, seamlessly.
 
@@ -30,7 +30,6 @@ Managing properties and tracking rent shouldn't require manual ledgers, missing 
 ## 🏗️ Core Architecture & Features
 
 ### 1. 🔐 The Security Layer
-<img align="left" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Locked%20with%20Pen.png" alt="Locked" width="60" />
 We don't just use standard logins. Our security mesh includes:
 
 - **Phone OTP & Biometric Fallbacks**: Frictionless and secure entry.
@@ -40,7 +39,6 @@ We don't just use standard logins. Our security mesh includes:
 <br>
 
 ### 2. ⚡ The Lightning Network (Push & Sync)
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/High%20Voltage.png" alt="Lightning" width="60" />
 Manual pull-to-refresh is a thing of the past:
 
 - **Supabase Edge Functions**: We wrote a custom Deno-based Edge Function that instantly translates database writes into OS-level Push Notifications.
@@ -50,7 +48,6 @@ Manual pull-to-refresh is a thing of the past:
 <br>
 
 ### 3. 💵 The Financial Engine
-<img align="left" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Money%20Bag.png" alt="Money" width="60" />
 The crown jewel of the application.
 
 - **Batch Generation**: Owners can tap a single button to generate expected rent records for 500+ tenants simultaneously.
@@ -60,7 +57,7 @@ The crown jewel of the application.
 <br><br>
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Line.png" alt="Line separator" width="100%" />
+<hr width="80%">
 
 ### 🌊 Flow & Logic
 ```mermaid
@@ -86,7 +83,7 @@ graph TD
 </details>
 
 ## 🛠 Develop & Run
-<img align="right" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80" />
+<h2>💻</h2>
 
 1. Clone the repository
 2. Run `flutter pub get`
