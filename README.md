@@ -42,7 +42,7 @@ We don't just use standard logins. Our security mesh includes:
 
 - **Phone OTP & Biometric Fallbacks**: Frictionless and secure entry.
 - **Role-Based Routing**: Intelligent onboarding that adapts the entire UI based on whether you are an Owner or a Tenant.
-- **Document Vault**: Fully secure, encrypted storage where tenants can upload PAN/Aadhaar cards for Owner Verification.
+- **Document Vault**: Fully secure, encrypted storage where tenants can upload PAN/Aadhaar cards. This triggers an **owner-approval workflow** where properties dynamically block room allotment until the Property Owner visually inspects and verifies the uploaded Government ID.
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=00B4D8&height=40&section=footer" width="100%"/>
@@ -95,10 +95,10 @@ graph TD
 ## 🎨 Visual Preview
 
 <details>
-<summary><b>Click to reveal the power of the UI 📸</b></summary>
+<summary><b>Click to reveal screenshots 📸</b></summary>
 <br>
 
-*We are currently undergoing a massive 3D Glassmorphism UI Revamp. Stay tuned for highly animated, 60fps polished screenshots!*
+*The application has recently undergone a massive 3D Glassmorphism UI Revamp, replacing the legacy design with highly animated, clean, 60fps polished components! Check the `/assets` or run the app to see it in action.*
 
 </details>
 
